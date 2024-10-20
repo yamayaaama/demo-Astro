@@ -1,0 +1,64 @@
+---
+import { Image } from '@astrojs/image/components'
+
+export interface Props {
+  src: string
+  title: string
+  name: string
+  description: string
+}
+
+const { src, title, name, description } = Astro.props;
+---
+
+<div class="member">
+  <div class="member__thubmnail">
+    <Image src={ src } alt="" width={300} height={300}/>
+  </div>
+  <div class="member__text">
+    <p class="member__title">{title}</p>
+    <p class="member__name">{ name }</p>
+    <p class="memner__description">{ description }</p>
+  </div>
+</div>
+
+<style>
+  .member {
+    color: var(--color-white);
+  }
+
+  .member__thubmnail {
+    border-radius: 99em;
+    overflow: hidden;
+    width: 192px;
+    height: 192px;
+    object-position: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .member__thubmnail img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .member__text {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .member__title {
+
+  }
+
+  .member__name {
+    font-size: var(--text-size-xl);
+    font-family: var(--font-family);
+  }
+
+  .memner__description {
+    margin-top: 24px;
+    text-align: left;
+    line-height: var(--line-height-relux);
+  }
+</style>

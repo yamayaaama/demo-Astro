@@ -1,0 +1,43 @@
+---
+import GlobalHeader from '../components/GlobalHeader.astro'
+import GlobalFooter from '../components/GlobalFooter.astro'
+import GlobalStyle from '../components/GlobalStyle.astro'
+import { SEO } from "astro-seo"
+export interface Props {
+  title: string
+  description: string
+  current: 'index' | 'company' | 'services' | 'recruit' | 'contact'
+}
+
+const { title, description, current } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <SEO title={title} description={description} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <GlobalStyle />
+  </head>
+  <body>
+    <GlobalHeader current={current}/>
+      <div class="container">
+        <slot />
+      </div>
+    <GlobalFooter />
+  </body>
+</html>
+
+<style>
+
+  .container {
+    max-inline-size: var(--container-width);
+    margin-inline: auto;
+    padding-inline: var(--container-margin);
+    line-height: var(--line-height-normal);
+  }
+  
+</style>

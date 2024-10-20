@@ -1,0 +1,123 @@
+---
+import AnchorButton from "./AnchorButton.astro"
+
+export interface Props {
+  current: 'index' | 'company' | 'services' | 'recruit' | 'contact'
+}
+
+const activeClass = { class: 'active' }
+
+const { current = 'index' } = Astro.props
+---
+
+<header class="globalHeader">
+	<div class="globalHeader__siteid">
+		<a {...current === 'index' ? { 'aria-current': 'page' }: {}} href="/">
+      <svg
+        role="img"
+        aria-label="FAKE AGENCY" 
+        width="182" 
+        height="21" 
+        viewBox="0 0 182 21" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+      <path d="M11.404 12.888H5.16V20H0.82V1.128H12.328V4.572H5.16V9.444H11.404V12.888ZM20.6961 11.992L20.5001 12.664H25.0361L24.8401 11.992C24.2987 10.1627 23.8507 8.604 23.4961 7.316C23.1601 6.028 22.9547 5.19733 22.8801 4.824L22.7681 4.264C22.6187 5.29067 21.9281 7.86667 20.6961 11.992ZM18.3161 20H13.8081L20.1081 1.128H25.5401L31.8401 20H27.2201L26.0721 16.136H19.4641L18.3161 20ZM50.5561 20H45.1521L38.8241 10.62L44.9281 1.128H50.0521L43.8641 10.564L50.5561 20ZM38.6281 20H34.3161V1.128H38.6281V20ZM64.5872 20H52.8552V1.128H64.4752V4.572H57.1952V8.856H63.6912V12.272H57.1952V16.556H64.5872V20ZM80.7976 11.992L80.6016 12.664H85.1376L84.9416 11.992C84.4003 10.1627 83.9523 8.604 83.5976 7.316C83.2616 6.028 83.0563 5.19733 82.9816 4.824L82.8696 4.264C82.7203 5.29067 82.0296 7.86667 80.7976 11.992ZM78.4176 20H73.9096L80.2096 1.128H85.6416L91.9416 20H87.3216L86.1736 16.136H79.5656L78.4176 20ZM110.686 18.264C108.894 19.5707 106.635 20.224 103.91 20.224C100.886 20.224 98.431 19.356 96.5457 17.62C94.6603 15.884 93.7177 13.5227 93.7177 10.536C93.7177 7.58667 94.6977 5.22533 96.6577 3.452C98.6363 1.67867 101.138 0.791999 104.162 0.791999C106.29 0.791999 108.128 1.184 109.678 1.968V6.28C107.886 5.25333 106.047 4.74 104.162 4.74C102.388 4.74 100.979 5.272 99.9337 6.336C98.8883 7.38133 98.3657 8.78133 98.3657 10.536C98.3657 12.3093 98.879 13.7187 99.9057 14.764C100.932 15.8093 102.332 16.332 104.106 16.332C104.908 16.332 105.702 16.2107 106.486 15.968V12.412H103.434V8.744H110.686V18.264ZM125.919 20H114.187V1.128H125.807V4.572H118.527V8.856H125.023V12.272H118.527V16.556H125.919V20ZM133.73 20H129.418V1.128H134.15L138.546 8.94C139.162 10.0413 139.694 11.0773 140.142 12.048C140.608 13 140.907 13.672 141.038 14.064L141.262 14.68C141.075 13.2987 140.982 11.3853 140.982 8.94V1.128H145.294V20H140.562L136.054 12.188C135.456 11.18 134.924 10.1907 134.458 9.22C134.01 8.23067 133.702 7.50267 133.534 7.036L133.31 6.336C133.59 8.016 133.73 9.96667 133.73 12.188V20ZM162.885 19.16C161.746 19.8693 160.104 20.224 157.957 20.224C155.194 20.224 152.88 19.3373 151.013 17.564C149.165 15.772 148.241 13.4573 148.241 10.62C148.241 7.74533 149.137 5.40267 150.929 3.592C152.74 1.78133 155.092 0.875999 157.985 0.875999C160.113 0.875999 161.746 1.23067 162.885 1.94V6.084C161.485 5.22533 159.926 4.796 158.209 4.796C156.697 4.796 155.428 5.328 154.401 6.392C153.374 7.43733 152.861 8.84667 152.861 10.62C152.861 12.356 153.374 13.7373 154.401 14.764C155.428 15.772 156.753 16.276 158.377 16.276C160.132 16.276 161.634 15.828 162.885 14.932V19.16ZM175.409 20H171.097V13.084L164.657 1.128H169.697L170.845 3.872C171.442 5.29067 171.937 6.504 172.329 7.512C172.721 8.52 172.973 9.17333 173.085 9.472L173.225 9.92C173.412 9.08 174.233 7.064 175.689 3.872L176.921 1.128H181.933L175.409 13.056V20Z" fill="white"/>
+      </svg>
+      </a>
+	</div>
+		<nav aria-label="メイン">
+			<ul>
+				<li {...(current === 'company' ? {...activeClass}: {})}>
+          <a {...current === 'index' ? { 'aria-current': 'page' }:{} } href="/company/">COMPANY</a>
+        </li>
+				<li {...(current === 'services' ? {...activeClass}: {})}>
+          <a {...current === 'index' ? { 'aria-current': 'page' }:{}} href="#">SERVICES</a>
+        </li>
+				<li {...(current === 'recruit' ? {...activeClass}: {})}>
+          <a {...current === 'index' ? { 'aria-current': 'page' }: {}} href="#">RECRUIT</a>
+        </li>
+				<li>
+          <AnchorButton type="gohst" size="m" href="/contact/" {...(current === 'contact' ? { 'aria-current': 'page' }: {})}>CONTACT</AnchorButton>
+        </li>
+			</ul>
+		</nav>
+<header>
+
+<style>
+
+.globalHeader {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	background-color: var(--color-black);
+	padding-inline: 28px 24px;
+  container-type: inline-size;
+}
+
+.globalHeader__siteid {
+	display: inline-flex;
+	align-items: center;
+	color: var(--color-white);
+}
+
+.globalHeader__siteid a {
+	padding: 28px;
+	text-decoration: none;
+	font-weight:bold;
+	color: var(--color-white);
+}
+
+nav {
+	display: inline-flex;
+	align-items: center;
+	margin-inline-start: auto;
+}
+
+ul {
+	display: inline-flex;
+	align-items: center;
+  flex: wrap;
+	gap: 24px;
+}
+
+li > a {
+	color: var(--color-white);
+	text-decoration: none;
+	display: inline-block;
+	font-family: var(--font-family);
+  font-weight: 700;
+	padding: 16px 0;
+  position: relative;
+}
+
+li.active > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-white);
+}
+
+li > a:hover {
+	filter: brightness(0.5);
+}
+
+@container (max-width: 20rem) {
+  nav {
+    margin-block-start: 8px;
+    margin-inline-start: unset;
+    width: 100%;
+  }
+
+  ul {
+    display: inline-flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+</style>

@@ -1,73 +1,193 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Card from '../components/Card.astro'
+import { Image } from '@astrojs/image/components'
+
+import IndexVisual from '../components/pages/index/IndexVisual.astro'
+import Contact from '../components/pages/shared/Contact.astro'
+import MediaSidebar from '../components/pages/shared/MediaSidebar.astro'
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Center from '../components/layouts/CenterLayout.astro'
+import AnchorButton from '../components/AnchorButton.astro'
+import Grid from '../components/layouts/Grid.astro'
+import Panel from '../components/Panel.astro'
+import Stack from '../components/layouts/Stack.astro'
+import SeparateCover from '../components/SeparateCover.astro'
+
+import works01 from '../images/index/img-works01.png'
+import works02 from '../images/index/img-works02.png'
+import works03 from '../images/index/img-works03.png'
+import works04 from '../images/index/img-works04.png'
+import works05 from '../images/index/img-works05.png'
+import works06 from '../images/index/img-works06.png'
+
+import imageAbout from '../images/index/img-about.png'
+import imageRecruit from '../images/index/recruit-cover.png'
+
 ---
 
-<Layout title="Welcome to Astro.">
+<BaseLayout title="TOPページです" description='TOPページです' current='index'>
   <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      To get started, open the directory <code>src/pages</code> in your project.<br />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-    </p>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card href="https://astro.build/themes/" title="Themes" body="Explore a galaxy of community-built starter themes." />
-      <Card href="https://astro.build/chat/" title="Community" body="Come say hi to our amazing Discord community. ❤️" />
-    </ul>
+    <Stack gap='192px' mobileGap='92px'>
+      <section class="indexVisual">
+        <IndexVisual />
+      </section>
+      <section>
+        <Center>
+          <header class="works__header">
+            <h2>WORKS</h2>
+          </header>
+          <Grid gap='12px' >
+            <Panel src={works01} title='パッケージビジュアルの制作' href='#' srcAlt='works01'></Panel>
+            <Panel src={works02} title='デリバリーオーダーシステム構築' href='#' srcAlt='works01'></Panel>
+            <Panel src={works03} title='コスメサイト構築' href='#' srcAlt='works01'></Panel>
+            <Panel src={works04} title='教育プラットフォーム開発' href='#' srcAlt='works01'></Panel>
+            <Panel src={works05} title='自然保全プロジェ クト' href='#' srcAlt='works01'></Panel>
+            <Panel src={works06} title='リモートワークツールの開発' href='#' srcAlt='works01'></Panel>
+          </Grid>
+          <footer class="works__footer">
+            <AnchorButton href="#" type='outline'>一覧を見る</AnchorButton>
+          </footer>
+        </Center>
+      </section>
+      <section>
+        <SeparateCover>
+          <Center>
+            <MediaSidebar src={imageAbout} >
+              <h2>新しい可能性を創造し、未来を共に切り開く</h2>
+              <p>「最初にトライしてみよう」という挑戦心と推進力を持って、企業と共に歩みます。 未来のゲームチェンジャーの「最初にトライしてみよう」を実現する』ことが、創業以来、すべてのサービスを継続的に発展させてきた原動力です。インターネットやスマートフォンの普及により、環境は日々変化しています。現状を維持し続けるだけでは、企業は衰退してしまいます。新しいことに挑戦しなければ、革新的なビジネスは生まれません。2020年代以降、低成長が続いた日本の経済を打破したいという強い想いから、「最初にトライしてみよう」という挑戦心と推進力を持って、ビッグデータとアルゴリズムの領域で企業と共に歩み、効率化や問題解決を追求したシステムの開拓により、社会の革新を支援します。</p>
+              <p><AnchorButton type='outline' href='#'>詳しく見る</AnchorButton></p>
+            </MediaSidebar>
+          </Center>
+        </SeparateCover>
+      </section>
+      <section class="news">
+        <header class="news__header">
+          <h2>NEWS</h2>
+        </header>
+        <ul class="news__list">
+          <li class="list">
+              <p class="list__date">2023/02/22</p>
+              <p><a class="list__title" href="#">役員の異動に関するお知らせ</a></p>
+          </li>
+          <li class="list">
+              <p class="list__date">2023/02/22</p>
+              <p><a class="list__title" href="#">役員の異動に関するお知らせ</a></p>
+          </li>
+          <li class="list">
+              <p class="list__date">2023/02/22</p>
+              <p><a class="list__title" href="#">役員の異動に関するお知らせ役員の異動に関するお知らせ役員の異動に関するお知らせ</a></p>
+          </li>
+        </ul>
+      </section>
+      <section class="recruit">
+        <Center>
+          <div class="recruit__body">
+              <h2>新しい挑戦をしたい人に<br />創造的で革新的な環境を。</h2>
+              <p><AnchorButton type='gohst' href='#'>JOIN TEAM</AnchorButton></p>
+          </div>
+        </Center>
+      </section>
+      <Contact />
+    </Stack>
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
+
+.indexVisual {
+  margin-top: 96px;
+}
+
+.with-sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 40%;
+}
+
+img {
+	/* max-width: 100%; */
+}
+
+h2 {
+font-family: 'Syne';
+font-style: normal;
+font-weight: 500;
+font-size: clamp(3.5rem, 5vw, var(--text-size-xxl));
+line-height: 125%;
+color: var(--color-black);
+}
+
+
+.works__header + :global(*) {
+  margin-block-start: 16px;
+}
+
+.works__footer {
+  margin-block-start: 32x;
+  display: flex;
+  justify-content: center;
+}
+
+.news {
+  /* max-inline-size: 80rem;
+  margin-inline: auto; */
+  container-type: inline-size;
+}
+
+.news__list .list {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  border-bottom: 1px solid var(--color-black);
+  padding-block: 32px;
+  padding-inline: 16px;
+}
+
+@container (max-width: 480px) {
+  .news__list .list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
+}
+
+.news__list .list__date {
+  font-weight: bold;
+  flex-shrink: 1;
+  flex-grow: 1;
+
+}
+
+.news__list .list__title:hover {
+  text-decoration: none;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+
+.recruit {
+  background-image: url('../../public/bg-recruit.png');
+  background-size: cover;
+  margin-inline: calc(50% - (50vw - var(--scrollbar) / 2));
+  padding-inline: var(--container-margin);
+  padding-block: 96px;
+  color: white;
+}
+.recruit__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  
+}
+
+.recruit__body h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+
+
 </style>
